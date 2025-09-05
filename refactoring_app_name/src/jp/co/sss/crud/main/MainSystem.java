@@ -50,7 +50,7 @@ public class MainSystem {
 
 			case ConstantValue.MENU_FIND_BY_EMP_NAME:
 				// 社員名検索
-				System.out.print("社員名:");
+				System.out.print(ConstantMsg.MSG_EMP_NAME);
 
 				// 検索機能の呼出
 				DBController.findByEmpName();
@@ -58,45 +58,45 @@ public class MainSystem {
 
 			case ConstantValue.MENU_FIND_BY_DEPT_ID:
 				// 検索する部署IDを入力
-				System.out.print("部署ID(1:営業部、2:経理部、3:総務部)を入力してください:");
-				String deptIdA = br.readLine();
+				System.out.print(ConstantMsg.MSG_DEPT_ID);
+				String searchDeptId = br.readLine();
 
 				// 検索機能の呼出
-				DBController.findByDeptId(deptIdA);
+				DBController.findByDeptId(searchDeptId);
 				break;
 
 			case ConstantValue.MENU_INSERT:
 				// 登録する値を入力
-				System.out.print("社員名:");
-				String emp_name = br.readLine();
-				System.out.print("性別(0:その他, 1:男性, 2:女性, 9:回答なし):");
-				String Seibetsu = br.readLine();
-				System.out.print("生年月日(西暦年/月/日):");
+				System.out.print(ConstantMsg.MSG_EMP_NAME);
+				String empName = br.readLine();
+				System.out.print(ConstantMsg.MSG_GENDER);
+				String gender = br.readLine();
+				System.out.print(ConstantMsg.MSG_BIRTHDAY);
 				String birthday = br.readLine();
-				System.out.print("部署ID(1:営業部、2:経理部、3:総務部):");
-				String deptIdB = br.readLine();
+				System.out.print(ConstantMsg.MSG_DEPT_ID);
+				String deptId = br.readLine();
 
 				// 登録機能の呼出
-				DBController.insert(emp_name, Seibetsu, birthday, deptIdB);
+				DBController.insert(empName, gender, birthday, deptId);
 				break;
 
 			case ConstantValue.MENU_UPDATE:
 				// 更新する社員IDを入力
-				System.out.print("更新する社員の社員IDを入力してください：");
+				System.out.print(ConstantMsg.MSG_UPDATE_INFO);
 
 				// 更新する値を入力する
-				String empId_1 = br.readLine();
-				Integer.parseInt(empId_1);
+				String updateEmpId = br.readLine();
+				Integer.parseInt(updateEmpId);
 
 				// 更新機能の呼出
-				DBController.update(empId_1);
-				System.out.println("社員情報を更新しました");
+				DBController.update(updateEmpId);
+				System.out.println(ConstantMsg.MSG_UPDATE_COMP);
 
 				break;
 
 			case ConstantValue.MENU_DELETE:
 				// 削除する社員IDを入力
-				System.out.print("削除する社員の社員IDを入力してください：");
+				System.out.print(ConstantMsg.MSG_DELETE_INFO);
 
 				// 削除機能の呼出
 				DBController.delete();
@@ -104,6 +104,6 @@ public class MainSystem {
 
 			}
 		} while (menuNo != ConstantValue.MENU_END);
-		System.out.println("システムを終了します。");
+		System.out.println(ConstantMsg.MSG_END);
 	}
 }
