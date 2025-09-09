@@ -36,4 +36,30 @@ public class ConstantValue {
 
 	/** 部署：総務部 */
 	public static final int DEPT_GENERAL_AFFAIRS = 3;
+
+	/** 社員名検索時の入力値インデックス(社員名) */
+	public static final int SEARCH_INDEX_EMP_NAME = 1;
+	/** 部署ID検索時の入力値インデックス(部署ID) */
+	public static final int SEARCH_INDEX_DEPT_ID = 1;
+
+	/** 登録時の入力値インデックス(社員名) */
+	public static final int INSERT_INDEX_EMP_NAME = 1;
+	/** 登録時の入力値インデックス(性別) */
+	public static final int INSERT_INDEX_GENDER = 2;
+	/** 登録時の入力値インデックス(誕生日) */
+	public static final int INSERT_INDEX_BIRTHDAY = 3;
+	/** 登録時の入力値インデックス(部署ID) */
+	public static final int INSERT_INDEX_DEPT_ID = 4;
+
+	/** 更新時の入力値インデックス(社員名) */
+	public static final int UPDATE_INDEX_EMP_NAME = 1;
+	/** 更新時の入力値インデックス(性別) */
+	public static final int UPDATE_INDEX_GENDER = 2;
+	/** 更新時の入力値インデックス(誕生日) */
+	public static final int UPDATE_INDEX_BIRTHDAY = 3;
+	/** 更新時の入力値インデックス(部署ID) */
+	public static final int UPDATE_INDEX_DEPT_ID = 4;
+	/** 更新時の入力値インデックス（社員ID）*/
+	public static final int UPDATE_INDEX_EMP_ID = 5;
+
 }

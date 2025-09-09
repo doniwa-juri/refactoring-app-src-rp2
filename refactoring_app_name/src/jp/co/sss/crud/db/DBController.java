@@ -117,7 +117,7 @@ public class DBController {
 			preparedStatement = connection.prepareStatement(sql.toString());
 
 			// 検索条件となる値をバインド
-			preparedStatement.setString(1, "%" + searchWord + "%");
+			preparedStatement.setString(ConstantValue.SEARCH_INDEX_EMP_NAME, "%" + searchWord + "%");
 
 			// SQL文を実行
 			resultSet = preparedStatement.executeQuery();
@@ -193,7 +193,7 @@ public class DBController {
 			preparedStatement = connection.prepareStatement(sql.toString());
 
 			// 検索条件となる値をバインド
-			preparedStatement.setInt(1, Integer.parseInt(deptId));
+			preparedStatement.setInt(ConstantValue.SEARCH_INDEX_DEPT_ID, Integer.parseInt(deptId));
 
 			// SQL文を実行
 			resultSet = preparedStatement.executeQuery();
@@ -277,11 +277,11 @@ public class DBController {
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_INSERT);
 
 			// 入力値をバインド
-			preparedStatement.setString(1, empName);
-			preparedStatement.setInt(2, Integer.parseInt(gender));
+			preparedStatement.setString(ConstantValue.INSERT_INDEX_EMP_NAME, empName);
+			preparedStatement.setInt(ConstantValue.INSERT_INDEX_GENDER, Integer.parseInt(gender));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-			preparedStatement.setObject(3, sdf.parse(birthday), Types.DATE);
-			preparedStatement.setInt(4, Integer.parseInt(deptId));
+			preparedStatement.setObject(ConstantValue.INSERT_INDEX_BIRTHDAY, sdf.parse(birthday), Types.DATE);
+			preparedStatement.setInt(ConstantValue.INSERT_INDEX_DEPT_ID, Integer.parseInt(deptId));
 
 			// SQL文を実行
 			preparedStatement.executeUpdate();
@@ -330,12 +330,12 @@ public class DBController {
 			String deptId = br.readLine();
 
 			// 入力値をバインド
-			preparedStatement.setString(1, emp_name);
-			preparedStatement.setInt(2, Integer.parseInt(gender));
+			preparedStatement.setString(ConstantValue.UPDATE_INDEX_EMP_NAME, emp_name);
+			preparedStatement.setInt(ConstantValue.UPDATE_INDEX_GENDER, Integer.parseInt(gender));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-			preparedStatement.setObject(3, sdf.parse(birthday), Types.DATE);
-			preparedStatement.setInt(4, Integer.parseInt(deptId));
-			preparedStatement.setInt(5, Integer.parseInt(empId));
+			preparedStatement.setObject(ConstantValue.UPDATE_INDEX_BIRTHDAY, sdf.parse(birthday), Types.DATE);
+			preparedStatement.setInt(ConstantValue.UPDATE_INDEX_DEPT_ID, Integer.parseInt(deptId));
+			preparedStatement.setInt(ConstantValue.UPDATE_INDEX_EMP_ID, Integer.parseInt(empId));
 
 			// SQL文の実行(失敗時は戻り値0)
 			preparedStatement.executeUpdate();
