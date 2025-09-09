@@ -38,4 +38,10 @@ public class ConstantMsg {
 	/** 終了メッセージ */
 	public static final String MSG_END = "システムを終了します。";
 
+	/** エラーメッセージ */
+	public static final String MSG_ERROR = "該当者はいませんでした";
+
+	/** 見出し */
+	public static final String MSG_TABLE_HEADER = "社員ID\t社員名\t性別\t生年月日\t部署名";
+
 }
