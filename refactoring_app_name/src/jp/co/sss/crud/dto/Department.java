@@ -1,10 +1,10 @@
 package jp.co.sss.crud.dto;
 
-public class Development {
+public class Department {
 	private int deptId;
 	private String deptName;
 
-	public Development(int deptId, String deptName) {
+	public Department(int deptId, String deptName) {
 		this.deptId = deptId;
 		this.deptName = deptName;
 	}
