@@ -60,5 +60,7 @@ public class ConstantMsg {
 	public static final String DEPT_ACCOUNTING = "経理部";
 	/** 総務部（部署） */
 	public static final String DEPT_GENERAL_AFFAIRS = "総務部";
+	/** 回答なし、その他（部署）*/
+	public static final String DEPT_UNKOWN = "回答なし";
 
 }
