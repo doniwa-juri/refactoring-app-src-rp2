@@ -14,9 +14,9 @@ public class EmployeeAllFindService implements IEmployeeService {
 	@Override
 	public void execute() throws SystemErrorException, IllegalInputException {
 		List<Employee> empList = new ArrayList<>();
-		EmployeeDAO employeeDao = new EmployeeDAO();
+		EmployeeDAO employeeDAO = new EmployeeDAO();
 
-		empList = employeeDao.findAll();
+		empList = employeeDAO.findAll();
 		ConsoleWriter.showEmployees(empList);
 
 	}
