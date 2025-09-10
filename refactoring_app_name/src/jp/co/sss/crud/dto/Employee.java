@@ -1,5 +1,7 @@
 package jp.co.sss.crud.dto;
 
+import jp.co.sss.crud.util.ConstantMsg;
+
 public class Employee {
 	private int empId;
 	private String empName;
@@ -53,6 +55,31 @@ public class Employee {
 
 	public void setDeptId(int deptId) {
 		this.deptId = deptId;
+	}
+
+	@Override
+	public String toString() {
+
+		String genderJa;
+		switch (this.gender) {
+		case 0 -> genderJa = ConstantMsg.GENDER_UNKOWN;
+		case 1 -> genderJa = ConstantMsg.GENDER_MALE;
+		case 2 -> genderJa = ConstantMsg.GENDER_FEMALE;
+		case 9 -> genderJa = ConstantMsg.GENDER_OTHER;
+		default -> genderJa = ConstantMsg.GENDER_UNKOWN;
+		}
+		;
+
+		String deptName;
+		switch (this.deptId) {
+		case 1 -> deptName = ConstantMsg.DEPT_SALES;
+		case 2 -> deptName = ConstantMsg.DEPT_ACCOUNTING;
+		case 3 -> deptName = ConstantMsg.DEPT_GENERAL_AFFAIRS;
+		default -> deptName = ConstantMsg.DEPT_UNKOWN;
+		}
+		;
+
+		return empId + "\t" + empName + "\t" + genderJa + "\t" + birthday + "\t" + deptName;
 	}
 
 }
