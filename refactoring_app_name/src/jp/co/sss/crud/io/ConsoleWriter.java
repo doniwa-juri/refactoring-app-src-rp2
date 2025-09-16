@@ -26,4 +26,21 @@ public class ConsoleWriter {
 		System.out.println(ConstantMsg.MSG_TABLE_HEADER);
 	}
 
+	public static void showCompleteUpdate(int result) {
+		if (result >= 1) {
+			System.out.println(ConstantMsg.MSG_UPDATE_COMP);
+		} else {
+			ConsoleWriter.showNonExistTarget();
+		}
+	}
+
+	public static void showCompleteDeletre(int result) {
+		if (result >= 1) {
+			System.out.println(ConstantMsg.MSG_DELETE_COMP);
+		} else {
+			ConsoleWriter.showNonExistTarget();
+		}
+
+	}
+
 }

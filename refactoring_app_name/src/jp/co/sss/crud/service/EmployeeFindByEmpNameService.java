@@ -9,6 +9,7 @@ import jp.co.sss.crud.exception.IllegalInputException;
 import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.io.ConsoleWriter;
 import jp.co.sss.crud.io.EmployeeNameReader;
+import jp.co.sss.crud.util.ConstantMsg;
 
 public class EmployeeFindByEmpNameService implements IEmployeeService {
 
@@ -17,6 +18,8 @@ public class EmployeeFindByEmpNameService implements IEmployeeService {
 		List<Employee> empList = new ArrayList<>();
 		EmployeeDAO employeeDAO = new EmployeeDAO();
 		EmployeeNameReader empNameReader = new EmployeeNameReader();
+
+		System.out.print(ConstantMsg.MSG_EMP_NAME);
 		String empName = (String) empNameReader.input();
 
 		empList = employeeDAO.findByEmployeeName(empName);

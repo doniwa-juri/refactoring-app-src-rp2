@@ -13,6 +13,8 @@ public class EmployeeDeleteService implements IEmployeeService {
 		int result = 0;
 		EmployeeDAO employeeDAO = new EmployeeDAO();
 		EmployeeEmpIdReader empIdReader = new EmployeeEmpIdReader();
+
+		System.out.print(ConstantMsg.MSG_DELETE_INFO);
 		int empId = (int) empIdReader.input();
 
 		result = employeeDAO.delete(empId);
