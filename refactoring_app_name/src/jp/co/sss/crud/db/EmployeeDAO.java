@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import jp.co.sss.crud.dto.Department;
 import jp.co.sss.crud.dto.Employee;
 import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.util.ConstantSQL;
@@ -22,6 +23,8 @@ public class EmployeeDAO implements IEmployeeDAO {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		List<Employee> empList = new ArrayList<>();
+		Employee employee = null;
+		Department department = null;
 
 		try {
 			// DBに接続
@@ -32,7 +35,18 @@ public class EmployeeDAO implements IEmployeeDAO {
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
-				empList.add(employeeFromResultSet(resultSet));
+				employee = new Employee();
+				employee.setEmpId(resultSet.getInt("empId"));
+				employee.setEmpName(resultSet.getString("emp_name"));
+				employee.setGender(resultSet.getInt("gender"));
+				employee.setBirthday(resultSet.getString("birthday"));
+				department = new Department();
+				department.setDeptName(resultSet.getString("dept_name"));
+				employee.setDepartment(department);
+
+				empList.add(employee);
+
+				//				empList.add(employeeFromResultSet(resultSet));
 			}
 
 		} catch (ClassNotFoundException | SQLException e) {
@@ -61,6 +75,8 @@ public class EmployeeDAO implements IEmployeeDAO {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		List<Employee> empList = new ArrayList<>();
+		Employee employee = null;
+		Department department = null;
 
 		try {
 			// DBに接続
@@ -76,7 +92,16 @@ public class EmployeeDAO implements IEmployeeDAO {
 			// SQL文を実行
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				empList.add(employeeFromResultSet(resultSet));
+				employee = new Employee();
+				employee.setEmpId(resultSet.getInt("emp_id"));
+				employee.setEmpName(resultSet.getString("emp_name"));
+				employee.setGender(resultSet.getInt("gender"));
+				employee.setBirthday(resultSet.getString("birthday"));
+				department = new Department();
+				department.setDeptName(resultSet.getString("dept_name"));
+				employee.setDepartment(department);
+
+				empList.add(employee);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new SystemErrorException("社員名検索でエラー発生", e);
@@ -103,6 +128,8 @@ public class EmployeeDAO implements IEmployeeDAO {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		List<Employee> empList = new ArrayList<>();
+		Employee employee = null;
+		Department department = null;
 
 		try {
 			// DBに接続
@@ -118,7 +145,16 @@ public class EmployeeDAO implements IEmployeeDAO {
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
-				empList.add(employeeFromResultSet(resultSet));
+				employee = new Employee();
+				employee.setEmpId(resultSet.getInt("emp_id"));
+				employee.setEmpName(resultSet.getString("emp_name"));
+				employee.setGender(resultSet.getInt("gender"));
+				employee.setBirthday(resultSet.getString("birthday"));
+				department = new Department();
+				department.setDeptName(resultSet.getString("dept_name"));
+				employee.setDepartment(department);
+
+				empList.add(employee);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new SystemErrorException("部署ID検索でエラー発生", e);
@@ -153,7 +189,7 @@ public class EmployeeDAO implements IEmployeeDAO {
 			preparedStatement.setString(ConstantValue.INSERT_INDEX_EMP_NAME, employee.getEmpName());
 			preparedStatement.setInt(ConstantValue.INSERT_INDEX_GENDER, employee.getGender());
 			preparedStatement.setObject(ConstantValue.INSERT_INDEX_BIRTHDAY, employee.getBirthday());
-			preparedStatement.setInt(ConstantValue.INSERT_INDEX_DEPT_ID, employee.getDeptId());
+			preparedStatement.setObject(ConstantValue.INSERT_INDEX_DEPT_ID, employee.getDepartment());
 
 			// SQL文を実行
 			preparedStatement.executeUpdate();
@@ -186,7 +222,7 @@ public class EmployeeDAO implements IEmployeeDAO {
 			preparedStatement.setString(ConstantValue.UPDATE_INDEX_EMP_NAME, employee.getEmpName());
 			preparedStatement.setInt(ConstantValue.UPDATE_INDEX_GENDER, employee.getGender());
 			preparedStatement.setObject(ConstantValue.UPDATE_INDEX_BIRTHDAY, employee.getBirthday());
-			preparedStatement.setInt(ConstantValue.UPDATE_INDEX_DEPT_ID, employee.getDeptId());
+			preparedStatement.setObject(ConstantValue.UPDATE_INDEX_DEPT_ID, employee.getDepartment());
 			preparedStatement.setInt(ConstantValue.UPDATE_INDEX_EMP_ID, employee.getEmpId());
 			// SQL文の実行(失敗時は戻り値0)
 			result = preparedStatement.executeUpdate();
@@ -241,13 +277,4 @@ public class EmployeeDAO implements IEmployeeDAO {
 		return result;
 	}
 
-	private Employee employeeFromResultSet(ResultSet resultSet) throws SQLException {
-		return new Employee(
-				resultSet.getInt("emp_id"),
-				resultSet.getString("emp_name"),
-				resultSet.getInt("gender"),
-				resultSet.getString("birthday"),
-				resultSet.getInt("dept_id"));
-
-	}
 }

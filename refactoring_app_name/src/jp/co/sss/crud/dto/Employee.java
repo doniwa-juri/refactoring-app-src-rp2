@@ -7,14 +7,17 @@ public class Employee {
 	private String empName;
 	private int gender;
 	private String birthday;
-	private int deptId;
+	private Department department;
 
-	public Employee(int empId, String empName, int gender, String birthday, int deptId) {
+	public Employee() {
+	}
+
+	public Employee(int empId, String empName, int gender, String birthday, Department department) {
 		this.empId = empId;
 		this.empName = empName;
 		this.gender = gender;
 		this.birthday = birthday;
-		this.deptId = deptId;
+		this.department = department;
 	}
 
 	public int getEmpId() {
@@ -49,12 +52,12 @@ public class Employee {
 		this.birthday = birthday;
 	}
 
-	public int getDeptId() {
-		return deptId;
+	public Department getDepartment() {
+		return department;
 	}
 
-	public void setDeptId(int deptId) {
-		this.deptId = deptId;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	@Override
@@ -70,16 +73,16 @@ public class Employee {
 		}
 		;
 
-		String deptName;
-		switch (this.deptId) {
-		case 1 -> deptName = ConstantMsg.DEPT_SALES;
-		case 2 -> deptName = ConstantMsg.DEPT_ACCOUNTING;
-		case 3 -> deptName = ConstantMsg.DEPT_GENERAL_AFFAIRS;
-		default -> deptName = ConstantMsg.DEPT_UNKOWN;
-		}
-		;
+		//		String deptName;
+		//		switch (this.deptId) {
+		//		case 1 -> deptName = ConstantMsg.DEPT_SALES;
+		//		case 2 -> deptName = ConstantMsg.DEPT_ACCOUNTING;
+		//		case 3 -> deptName = ConstantMsg.DEPT_GENERAL_AFFAIRS;
+		//		default -> deptName = ConstantMsg.DEPT_UNKOWN;
+		//		}
+		//		;
 
-		return empId + "\t" + empName + "\t" + genderJa + "\t" + birthday + "\t" + deptName;
+		return empId + "\t" + empName + "\t" + genderJa + "\t" + birthday + "\t" + department.getDeptName();
 	}
 
 }
