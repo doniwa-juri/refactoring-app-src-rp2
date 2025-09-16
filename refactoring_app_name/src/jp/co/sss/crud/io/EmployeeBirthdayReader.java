@@ -1,6 +1,6 @@
 package jp.co.sss.crud.io;
 
-public class EmployeeNameReader implements IConsoleReader {
+public class EmployeeBirthdayReader implements IConsoleReader {
 
 	@Override
 	public String getErrorMsg() {
